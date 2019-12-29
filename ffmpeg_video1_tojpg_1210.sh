@@ -10,4 +10,4 @@ ml system
 ml ffmpeg
 
 
-ffmpeg -i '/oak\stanford\groups\trc\data\Ashley2\PER\20191210\Video_1.m4v' -vf fps=1/5 'oak\stanford\groups\trc\data\Ashley2\PER\20191210\analysis\Video1\V01frame_%%07d.jpg'
+ffmpeg -i '/oak/stanford/groups/trc/data/Ashley2/PER/20191210/Video_1.m4v' -vf fps=1/5 '/oak/stanford/groups/trc/data/Ashley2/PER/20191210/analysis/Video1/V01frame_%%07d.jpg'
