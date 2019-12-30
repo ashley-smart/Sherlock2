@@ -17,6 +17,7 @@ ml py-scikit-learn/0.19.1_py36
 ml opencv
 ml py-scipy
 ml system
+ml ffmpeg
 
 #check these are real modules
 ##ml matplotlib
