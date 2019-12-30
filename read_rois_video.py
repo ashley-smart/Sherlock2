@@ -49,11 +49,8 @@ save_path = '/oak/stanford/groups/trc/data/Ashley2/PER/' + str(date) + "/"
 
 # Check if opened successfully
 if (cap.isOpened() is False):
-    print('Error opening video stream or file for: ' + assayName)
     print("Error opening video stream or file") #, file=f)
-    ee = open(assayName + '_errorFile.txt', 'w')
-    ee.write('Error opening video stream or file.')
-    ee.close()
+    
 else:
     print('vid opened successfully') #, file=f)
 
@@ -163,6 +160,7 @@ fig.savefig(os.path.join(save_path, 'video_' + str(video_number) + '_ROI_image.p
 all_avg_intensity = []
 frame_count = 1
 while True: 
+    clear_output(wait = True)
     success, frame = cap.read()
     if success:
         frame_count += 1
@@ -173,10 +171,38 @@ while True:
             avg_intensity_each_roi = np.mean(flat_frame[all_roi_masks[roi_index]])
             all_roi_avg_intensity_per_frame.append(avg_intensity_each_roi)
         all_avg_intensity.append(all_roi_avg_intensity_per_frame)
+        last_frame = frame
     else:
         break
+        
 
-plt.imshow(frame)
+    
+    #to get percent complete
+    #print("Current progress: ", np.round(jpeg_index/len(jpeg_file_names) *100, 2), "%")
+    print("Current frame #: ", frame_count)
+        
+        
+        
+#save results 
+#want the format to be the same as the fiji format so I don't have to change my other code
+#format for fiji is row 1 [blank(col of frame numbers), Label, Mean(PER), Mean(PER2), etc]
+#print(all_name_for_header)
+header = all_name_for_header
+# if 'Label' not in header: #prevents accidentally adding too many times
+#     header.insert(0,'Label')
+# print(header)
+
+
+with open(os.path.join(save_path, str(save_file_name)), 'w', newline='') as csvFile:
+    writer = csv.writer(csvFile)
+    writer.writerow(header)
+    for frame_i in range(len(all_avg_intensity)):
+        writer.writerow(all_avg_intensity[frame_i])
+print("saved")
+
+
+
+plt.imshow(last_frame)
 plt.show()
 for i in range(len(all_poly_x)):
     if all_poly_name[i] == 'Light':
@@ -193,7 +219,7 @@ for i in range(len(all_poly_x)):
         x1 = min(all_poly_x[i])
         x2 = max(all_poly_x[i])
         print(y1, y2, x1, x2)
-        cropped_frame = frame[y1:y2, x1:x2]
+        cropped_frame = last_frame[y1:y2, x1:x2]
         #cropped_frame = frame[0:300, 0:100]
         plt.imshow(cropped_frame)
         plt.show()
@@ -214,21 +240,9 @@ for i in range(len(all_poly_x)):
         plt.show()
         plt.scatter(all_poly_x[i], all_poly_y[i], color = 'red', s = 2 ) #to see actual shape
         plt.show()
-        fig1.savefig(savepath + '_croppedLED.png')
+        fig1.savefig(savepath + str(i) + '_croppedLED.png')
         plt.close()
 
-#save results 
-#want the format to be the same as the fiji format so I don't have to change my other code
-#format for fiji is row 1 [blank(col of frame numbers), Label, Mean(PER), Mean(PER2), etc]
-#print(all_name_for_header)
-header = all_name_for_header
-# if 'Label' not in header: #prevents accidentally adding too many times
-#     header.insert(0,'Label')
-# print(header)
 
 
-with open(os.path.join(save_path, str(save_file_name)), 'w', newline='') as csvFile:
-    writer = csv.writer(csvFile)
-    writer.writerow(header)
-    for frame_i in range(len(all_avg_intensity)):
-        writer.writerow(all_avg_intensity[frame_i])
+
