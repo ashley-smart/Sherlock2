@@ -33,7 +33,7 @@ video_name = 'Video_1.m4v'
 
 
 # roi_path = "E:/PER2/" + str(date) + "/analysis/RoiSet_vid" + str(roi_number) + "/"
-roi_path = '/oak/stanford/groups/trc/data/Ashley2/PER/20191217/' + str(date) + "/analysis/RoiSet_vid" + str(roi_number) + "/"
+roi_path = '/oak/stanford/groups/trc/data/Ashley2/PER/' + str(date) + "/analysis/RoiSet_vid" + str(roi_number) + "/"
 rois = os.listdir(roi_path)
 print(rois)
 
@@ -41,11 +41,11 @@ print(rois)
 # jpeg_file_names = os.listdir(jpeg_path)
 
 #video_path = "E:/PER2/" + str(date) + "/" + str(video_name)
-video_path = '/oak/stanford/groups/trc/data/Ashley2/PER/20191217/' + str(date) + "/" + str(video_name)
+video_path = '/oak/stanford/groups/trc/data/Ashley2/PER/' + str(date) + "/" + str(video_name)
 cap = cv2.VideoCapture(video_path)
 
 save_file_name = "Results_video_" + str(video_number) + "_python_m4v.csv"
-save_path = '/oak/stanford/groups/trc/data/Ashley2/PER/20191217/' + str(date) + "/" 
+save_path = '/oak/stanford/groups/trc/data/Ashley2/PER/' + str(date) + "/" 
 
 # Check if opened successfully
 if (cap.isOpened() is False):
