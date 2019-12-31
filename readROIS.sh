@@ -18,6 +18,7 @@ ml opencv
 ml py-scipy
 ml system
 ml ffmpeg
+ml python/3.6.1
 
 #check these are real modules
 ##ml matplotlib
