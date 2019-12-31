@@ -23,7 +23,7 @@ from read_roi import read_roi_zip
 ##################################
 ##change this stuff ##############
 ##################################
-date = '20191210'
+date = '20191218'
 video_number = 1
 roi_number = 1
 video_name = 'Video_1.m4v'

@@ -3,7 +3,7 @@
 #SBATCH--time=2:00:00
 #SBATCH--ntasks=1
 #SBATCH--cpus-per-task=3
-#SBATCH --output=./outputs_ffmpegtovideo/slurm-%j.out
+#SBATCH --output=./outputs_ffmpeg/slurm-%j.out
 
 #gets frame every 10 seconds
 
