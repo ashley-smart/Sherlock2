@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=3
 #SBATCH --output=./outputs_readrois/slurm-%j.out
 
-ml gcc/6.3.0
+#ml gcc/6.3.0
 ml python/3.6.1
 #ml py-numpy/1.14.3_py36
 #ml py-pandas/0.23.0_py36
@@ -14,11 +14,11 @@ ml python/3.6.1
 #ml py-scikit-learn/0.19.1_py36
 
 
-ml opencv
-ml py-scipy
+#ml opencv
+#ml py-scipy
 ml system
-ml ffmpeg
-ml python/3.6.1
+#ml ffmpeg
+#ml python/3.6.1
 
 #check these are real modules
 ##ml matplotlib
