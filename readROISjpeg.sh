@@ -32,3 +32,5 @@ ml system
 echo "about to start python"
 
 python3 /home/users/asmart/scripts/Sherlock2/read_rois_jpeg.py
+
+echo "python has run"
