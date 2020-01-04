@@ -29,4 +29,6 @@ ml system
 # ml pickle
 #ml read_roi
 
+echo "about to start python"
+
 python3 /home/users/asmart/scripts/Sherlock2/read_rois_jpeg.py
