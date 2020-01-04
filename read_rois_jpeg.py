@@ -25,16 +25,16 @@ roi_number = 1
 #video_name = 'Video_3.m4v'
 
 # roi_path = "E:/PER2/" + str(date) + "/analysis/RoiSet_vid" + str(roi_number) + "/"
-roi_path = "/oak/stanford/groups/data/Ashley2/PER/" + str(date) + "/analysis/RoiSet_vid" + str(roi_number) + "/"
+roi_path = "/oak/stanford/groups/trc/data/Ashley2/PER/" + str(date) + "/analysis/RoiSet_vid" + str(roi_number) + "/"
 rois = os.listdir(roi_path)
 print(rois)
 
-jpeg_path = "/oak/stanford/groups/data/Ashley2/PER/" + str(date) + "/analysis/Video" + str(video_number) + "/"
+jpeg_path = "/oak/stanford/groups/trc/data/Ashley2/PER/" + str(date) + "/analysis/Video" + str(video_number) + "/"
 jpeg_file_names = os.listdir(jpeg_path)
 
 
 save_file_name = "Results_video_" + str(video_number) + "_python_jpg_sherlock.csv"
-save_path = "/oak/stanford/groups/data/Ashley2/PER/" + str(date) + "/analysis/"
+save_path = "/oak/stanford/groups/trc/data/Ashley2/PER/" + str(date) + "/analysis/"
 
 #read_roi_file puts data into dict in dict
 all_roi_info_dict = []
