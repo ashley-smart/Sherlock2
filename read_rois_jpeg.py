@@ -136,7 +136,7 @@ for roi_index in range(len(all_poly_x)):
 
 fig = plt.figure()
 for i in range(len(all_poly_x)):
-    plt.scatter(all_poly_x[i], all_poly_y[i], color = 'red', s = 2 )plt.show()
+    plt.scatter(all_poly_x[i], all_poly_y[i], color = 'red', s = 2 )
 fig.savefig(os.path.join(save_path, 'video_' + str(video_number) + '_ROI_image.png'))
 
 
@@ -194,7 +194,6 @@ for i in range(len(all_poly_x)):
         cropped_frame = frame[y1:y2, x1:x2]
         #cropped_frame = frame[0:300, 0:100]
         plt.imshow(cropped_frame)
-        plt.show()
         plt.scatter(all_poly_x[i], all_poly_y[i], color = 'red', s = 2 )
         plt.show()
     else:
@@ -209,7 +208,6 @@ for i in range(len(all_poly_x)):
 #         plt.scatter(x2, y2, color = 'white')
         cropped_frame = frame[y1:y2, x1:x2]
         plt.imshow(cropped_frame)
-        plt.show()
         plt.scatter(all_poly_x[i], all_poly_y[i], color = 'red', s = 2 ) #to see actual shape
         plt.show()
     fig1.savefig(savepath + str(i) + '_croppedLED.png')
