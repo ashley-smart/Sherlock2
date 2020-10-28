@@ -6,7 +6,7 @@
 #SBATCH --time=72:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=10
-#SBATCH --output=/home/users/mhturner/turner_analysis/job_outputs/%x.%j.out
+#SBATCH --output=/home/users/asmart/scripts/Sherlock2/brain_analysis/registration/job_outputs/%x.%j.out
 #SBATCH --open-mode=append
 
 module use /home/groups/trc/modules
