@@ -2,9 +2,23 @@ import numpy as np
 import ants
 import nibabel as nib
 
+#folder path for brains
+folder_path = '/oak/stanford/groups/trc/data/Ashley2/imports/'
+
+#date
+date = '20200918/'
+
+#fly_folder_names
+
+
+
 # brain file paths
 channel_1_brain_fn = '/oak/stanford/groups/trc/data/Ashley2/imports/20200918/fly1_2x1_dehyd_1s_8.5v-031/fly1_2x1_dehyd_1s_8.5v-031_channel_1.nii'
 channel_2_brain_fn = '/oak/stanford/groups/trc/data/Ashley2/imports/20200918/fly1_2x1_dehyd_1s_8.5v-031/fly1_2x1_dehyd_1s_8.5v-031_channel_1.nii'
+
+#save file path
+save_file_path = folder_path + date
+
 
 # Load brains using nibabel
 # shape is x,y,z,t
@@ -13,7 +27,7 @@ nib_brain_2 = np.asanyarray(nib.load(channel_2_brain_fn).dataobj).astype('uint32
 
 micronsPerPixel_XAxis = 1 #um
 micronsPerPixel_YAxis = 1
-micronsPerPixel_ZAxis = 3
+micronsPerPixel_ZAxis = 5
 frame_period = 1 # sec
 
 # define the brain spacing in microns. Not strictly necessary but nice to save out correct transform files and
@@ -51,8 +65,8 @@ ch2_corrected = np.moveaxis(np.asarray(ch2_corrected), 0, 3).astype('uint16')
 # merge into a single .nii file: # xyztc
 merged = np.stack([ch1_corrected, ch2_corrected], axis=4)  # xyztc
 
-file_path = 'save/file/path'
-nib.save(nib.Nifti1Image(merged, np.eye(4)), file_path + '_reg.nii')
+
+nib.save(nib.Nifti1Image(merged, np.eye(4)), save_file_path + '_reg.nii')
 print('Brain saved')
 
 # have to do some weird format changes to pull out the transform data...
@@ -65,6 +79,6 @@ for i, t in enumerate(transform):
 transform_matrix = np.array(transform_matrix)
 
 # shows transformation parameters (e.g. x translation, y translation, x axis rotation etc. etc.) for each frame
-np.save(file_path + '_transform', transform_matrix)
+np.save(save_file_path + '_transform', transform_matrix)
 
-print('Saved reg and transforms: {} ({} sec.)'.format(file_path, time.time()-t_0))
+print('Saved reg and transforms: {} ({} sec.)'.format(save_file_path, time.time()-t_0))
