@@ -12,7 +12,11 @@ date = '20200918/'
 
 #save file path
 file_path = folder_path + date
-save_file_path = folder_path + date
+save_file_path = '/oak/stanford/groups/trc/data/Ashley2/brain_registration' + date
+if os.path.exists(save_file_path):
+    print('folder there')
+else:
+    os.makedirs(save_file_path)
 
 #fly_folder_names
 files = os.listdir(file_path)
@@ -97,4 +101,5 @@ for fly_name in fly_folder_name_list:
     # shows transformation parameters (e.g. x translation, y translation, x axis rotation etc. etc.) for each frame
     np.save(save_file_path + '_transform', transform_matrix)
 
-    print('Saved reg and transforms: {} ({} sec.)'.format(save_file_path, time.time()-t_0))
+    #print('Saved reg and transforms: {} ({} sec.)'.format(save_file_path, time.time()-t_0))
+    print('Saved reg and transforms: {} '.format(save_file_path)
