@@ -8,11 +8,11 @@ os.listdir(os.getcwd())
 folder_path = '/oak/stanford/groups/trc/data/Ashley2/imports/'
 
 #date
-date = '20200918/'
+date = '20200918/'  #don't forget the / at end
 
 #save file path
 file_path = folder_path + date
-save_file_path = '/oak/stanford/groups/trc/data/Ashley2/brain_registration' + date
+save_file_path = '/oak/stanford/groups/trc/data/Ashley2/brain_registration/' + str(date)
 if os.path.exists(save_file_path):
     print('folder there')
 else:
@@ -102,4 +102,4 @@ for fly_name in fly_folder_name_list:
     np.save(save_file_path + '_transform', transform_matrix)
 
     #print('Saved reg and transforms: {} ({} sec.)'.format(save_file_path, time.time()-t_0))
-    print('Saved reg and transforms: {} '.format(save_file_path)
+    print('Saved reg and transforms: {} '.format(save_file_path))
