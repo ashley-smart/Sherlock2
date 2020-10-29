@@ -86,7 +86,7 @@ for fly_name in fly_folder_name_list:
     merged = np.stack([ch1_corrected, ch2_corrected], axis=4)  # xyztc
 
 
-    nib.save(nib.Nifti1Image(merged, np.eye(4)), save_file_path + '_reg.nii')
+    nib.save(nib.Nifti1Image(merged, np.eye(4)), str(save_file_path) + str(fly_name) + '_reg.nii')
     print('Brain saved')
 
     # have to do some weird format changes to pull out the transform data...
@@ -99,7 +99,7 @@ for fly_name in fly_folder_name_list:
     transform_matrix = np.array(transform_matrix)
 
     # shows transformation parameters (e.g. x translation, y translation, x axis rotation etc. etc.) for each frame
-    np.save(save_file_path + '_transform', transform_matrix)
+    np.save(str(save_file_path) + str(fly_name) + '_transform', transform_matrix)
 
     #print('Saved reg and transforms: {} ({} sec.)'.format(save_file_path, time.time()-t_0))
-    print('Saved reg and transforms: {} '.format(save_file_path))
+    print('Saved reg and transforms: {} '.format(str(save_file_path)+ str(fly_name)))
