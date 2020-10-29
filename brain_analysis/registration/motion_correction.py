@@ -50,9 +50,9 @@ for brain_frame in range(ch2_brain.shape[3]): # for each frame
     # register ch2 frame to ch2 reference
     # see https://antspy.readthedocs.io/en/latest/registration.html for allowable types of transforms.
     # Rigid (translation + rotation) is usually OK for this. Transforms with more degrees of freedom take longer to compute
-    reg = ants.registration(ch2_reference, ants.from_numpy(ch2_brain[:, :, :, brain_frame], spacing=spacing[0:3]), type_of_transform='Rigid')
+    reg = ants.registration(ch2_reference, ants.from_numpy(ch2_brain[:, :, :, brain_frame], spacing=brain_spacing[0:3]), type_of_transform='Rigid')
     # apply registration to ch2
-    ch1_frame = ants.apply_transforms(ch1_reference, ants.from_numpy(ch1_brain[:, :, :, brain_frame], spacing=spacing[0:3]), reg['fwdtransforms'])
+    ch1_frame = ants.apply_transforms(ch1_reference, ants.from_numpy(ch1_brain[:, :, :, brain_frame], spacing=brain_spacing[0:3]), reg['fwdtransforms'])
 
     ch2_corrected.append(reg['warpedmovout'].numpy())
     ch1_corrected.append(ch1_frame.numpy())
