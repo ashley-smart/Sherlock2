@@ -39,8 +39,8 @@ ch1_brain = ants.from_numpy(nib_brain_1, spacing=brain_spacing)
 ch2_brain = ants.from_numpy(nib_brain_2, spacing=brain_spacing)
 
 # reference brain = time-average of first 100 frames
-ch1_reference = ants.from_numpy(ch1_brain[:, :, :, 0:100].mean(axis=3), spacing=spacing[0:3])  # xyz
-ch2_reference = ants.from_numpy(ch2_brain[:, :, :, 0:100].mean(axis=3), spacing=spacing[0:3])  # xyz
+ch1_reference = ants.from_numpy(ch1_brain[:, :, :, 0:100].mean(axis=3), spacing=brain_spacing[0:3])  # xyz
+ch2_reference = ants.from_numpy(ch2_brain[:, :, :, 0:100].mean(axis=3), spacing=brain_spacing[0:3])  # xyz
 
 ch1_corrected = []
 ch2_corrected = []
