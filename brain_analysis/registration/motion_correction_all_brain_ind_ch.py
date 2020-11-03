@@ -8,7 +8,7 @@ os.listdir(os.getcwd())
 folder_path = '/oak/stanford/groups/trc/data/Ashley2/imports/'
 
 #date
-date = '20200918/'  #don't forget the / at end
+date = '20200916/'  #don't forget the / at end
 
 #save file path
 file_path = folder_path + date
